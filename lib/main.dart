@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:you_tube/features/auth/pages/login_page.dart';
 import 'package:you_tube/firebase_options.dart';
 
 void main() async {
@@ -18,7 +19,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Container(),
+      home: LoginPage(),
     );
   }
 }

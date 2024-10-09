@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "101703302103",
+    "project_id": "you-tube-2dc42",
+    "storage_bucket": "you-tube-2dc42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101703302103:android:46666db1cd0ec52825e992",
+        "android_client_info": {
+          "package_name": "com.example.you_tube"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6mVPn-9XUvTeKcXlGE_BXnsYbcKDWzXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

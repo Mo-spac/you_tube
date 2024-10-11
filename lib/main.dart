@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:you_tube/features/auth/pages/login_page.dart';
+import 'package:you_tube/features/auth/pages/username_page.dart';
 import 'package:you_tube/firebase_options.dart';
 import 'package:you_tube/home_page.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends ConsumerWidget {
           if (!snapshot.hasData) {
             return LoginPage();
           }
-          return HomePage();
+          return UsernamePage();
         },
       ),
     );

@@ -42,7 +42,7 @@ class LoginPage extends ConsumerWidget {
                   height: 50,
                 ),
               ),
-            )
+            ),
           ],
         ),
       )),

@@ -1,19 +1,28 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:you_tube/core/widgets/flat_button.dart';
+import 'package:you_tube/features/auth/repository/user_data_service.dart';
 
 final formKey = GlobalKey<FormState>();
 
-class UsernamePage extends StatefulWidget {
-  const UsernamePage({super.key});
+class UsernamePage extends ConsumerStatefulWidget {
+  final String displayName;
+  final String profilPic;
+  final String email;
+
+  const UsernamePage({
+    required this.displayName,
+    required this.profilPic,
+    required this.email,
+    super.key,
+  });
 
   @override
-  State<UsernamePage> createState() => _UsernamePageState();
+  ConsumerState<UsernamePage> createState() => _UsernamePageState();
 }
 
-class _UsernamePageState extends State<UsernamePage> {
+class _UsernamePageState extends ConsumerState<UsernamePage> {
   final TextEditingController usernameController = TextEditingController();
   bool isValidate = true;
 
@@ -60,7 +69,9 @@ class _UsernamePageState extends State<UsernamePage> {
                     validateUsername();
                   },
                   autovalidateMode: AutovalidateMode.always,
-                  validator: (username) {},
+                  validator: (username) {
+                    return isValidate ? null : "Username already taken";
+                  },
                   key: formKey,
                   controller: usernameController,
                   decoration: InputDecoration(
@@ -87,8 +98,20 @@ class _UsernamePageState extends State<UsernamePage> {
               padding: const EdgeInsets.only(bottom: 30, left: 8, right: 8),
               child: FlatButton(
                 text: "CONTINUE",
-                onPressed: () {
+                onPressed: () async {
                   // add user data inside database
+
+                  isValidate
+                      ? await ref
+                          .read(userDataServiceProvider)
+                          .addUserDataToFireStore(
+                            displayName: widget.displayName,
+                            username: usernameController.text,
+                            email: widget.email,
+                            profilePic: widget.profilPic,
+                            description: "",
+                          )
+                      : null;
                 },
                 colour: isValidate ? Colors.green : Colors.green.shade100,
               ),

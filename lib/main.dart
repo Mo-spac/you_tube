@@ -28,7 +28,11 @@ class MyApp extends ConsumerWidget {
           if (!snapshot.hasData) {
             return LoginPage();
           }
-          return UsernamePage();
+          return UsernamePage(
+            displayName: '',
+            profilPic: '',
+            email: '',
+          );
         },
       ),
     );

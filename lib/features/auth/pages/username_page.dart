@@ -8,14 +8,13 @@ final formKey = GlobalKey<FormState>();
 
 class UsernamePage extends ConsumerStatefulWidget {
   final String displayName;
-  final String profilPic;
+  final String profilePic;
   final String email;
 
   const UsernamePage({
     required this.displayName,
-    required this.profilPic,
+    required this.profilePic,
     required this.email,
-    super.key,
   });
 
   @override
@@ -27,7 +26,7 @@ class _UsernamePageState extends ConsumerState<UsernamePage> {
   bool isValidate = true;
 
   void validateUsername() async {
-    final userMap = await FirebaseFirestore.instance.collection("Users").get();
+    final userMap = await FirebaseFirestore.instance.collection("users").get();
 
     final users = userMap.docs.map((user) => user).toList();
     String? targeredUsername;
@@ -53,7 +52,10 @@ class _UsernamePageState extends ConsumerState<UsernamePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 26, horizontal: 14),
+              padding: EdgeInsets.symmetric(
+                vertical: 26,
+                horizontal: 14,
+              ),
               child: Text(
                 "Enter the Username",
                 style: TextStyle(
@@ -79,7 +81,7 @@ class _UsernamePageState extends ConsumerState<UsernamePage> {
                         ? Icon(Icons.verified_user_rounded)
                         : Icon(Icons.cancel),
                     suffixIconColor: isValidate ? Colors.green : Colors.red,
-                    hintText: "Insery Username",
+                    hintText: "Insert Username",
                     border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue),
                     ),
@@ -104,11 +106,11 @@ class _UsernamePageState extends ConsumerState<UsernamePage> {
                   isValidate
                       ? await ref
                           .read(userDataServiceProvider)
-                          .addUserDataToFireStore(
+                          .addUserDataToFirestore(
                             displayName: widget.displayName,
                             username: usernameController.text,
                             email: widget.email,
-                            profilePic: widget.profilPic,
+                            profilePic: widget.profilePic,
                             description: "",
                           )
                       : null;

@@ -19,7 +19,7 @@ class UserDataService {
     required this.fireStore,
   });
 
-  addUserDataToFireStore({
+  addUserDataToFirestore({
     required String displayName,
     required String username,
     required String email,

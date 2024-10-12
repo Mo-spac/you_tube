@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:you_tube/core/screens/error_page.dart';
+import 'package:you_tube/core/screens/loader.dart';
 import 'package:you_tube/core/widgets/image_button.dart';
+import 'package:you_tube/features/auth/provider/user_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -50,12 +54,23 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: CircleAvatar(
-                  radius: 14,
-                  backgroundColor: Colors.grey,
-                ),
+              Consumer(
+                builder: (context, ref, child) {
+                  return ref.watch(currentUserProvider).when(
+                        data: (currentUser) => Padding(
+                          padding: const EdgeInsets.only(right: 12),
+                          child: CircleAvatar(
+                            radius: 14,
+                            backgroundColor: Colors.grey,
+                            backgroundImage: CachedNetworkImageProvider(
+                              currentUser.profilePic,
+                            ),
+                          ),
+                        ),
+                        error: (error, stackTrace) => const ErrorPage(),
+                        loading: () => const Loader(),
+                      );
+                },
               ),
             ],
           )

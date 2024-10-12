@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:you_tube/core/widgets/image_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -47,6 +48,13 @@ class HomePage extends StatelessWidget {
                     onPressed: () {},
                     haveColor: false,
                   ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: CircleAvatar(
+                  radius: 14,
+                  backgroundColor: Colors.grey,
                 ),
               ),
             ],

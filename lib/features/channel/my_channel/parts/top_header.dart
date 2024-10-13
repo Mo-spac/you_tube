@@ -38,7 +38,7 @@ class TopHeader extends StatelessWidget {
                 TextSpan(text: "${user.username}    "),
                 TextSpan(
                     text: "${user.subscriptions.length} subscriptions    "),
-                TextSpan(text: "${user.videos}"),
+                TextSpan(text: "${user.videos} videos"),
               ],
             ),
           ),

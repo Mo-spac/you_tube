@@ -8,14 +8,14 @@ import 'package:you_tube/features/channel/my_channel/repository/edit_field.dart'
 import 'package:you_tube/features/channel/my_channel/wedgits/edit_setting_dialog.dart';
 import 'package:you_tube/features/channel/my_channel/wedgits/setting_field_item.dart';
 
-class MyChannelSetting extends ConsumerStatefulWidget {
-  const MyChannelSetting({super.key});
+class MyChannelSettings extends ConsumerStatefulWidget {
+  const MyChannelSettings({super.key});
 
   @override
-  ConsumerState<MyChannelSetting> createState() => _MyChannelSettingState();
+  ConsumerState<MyChannelSettings> createState() => _MyChannelSettingsState();
 }
 
-class _MyChannelSettingState extends ConsumerState<MyChannelSetting> {
+class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
   bool isSwiched = false;
   @override
   Widget build(BuildContext context) {

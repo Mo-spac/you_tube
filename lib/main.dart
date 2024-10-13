@@ -8,6 +8,7 @@ import 'package:you_tube/features/auth/pages/login_page.dart';
 import 'package:you_tube/features/auth/pages/username_page.dart';
 import 'package:you_tube/features/channel/my_channel/pages/channel_settings.dart';
 import 'package:you_tube/features/channel/my_channel/pages/my_channel_screen.dart';
+import 'package:you_tube/features/channel/users_channel/pages/user_channel_page.dart';
 import 'package:you_tube/firebase_options.dart';
 import 'package:you_tube/home_page.dart';
 
@@ -52,7 +53,7 @@ class MyApp extends ConsumerWidget {
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return Loader();
               }
-              return MyChannelSetting();
+              return UserChannelPage();
             },
           );
         },
